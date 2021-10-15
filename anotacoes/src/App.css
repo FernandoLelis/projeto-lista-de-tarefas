@@ -23,6 +23,7 @@ body {
 }
 
 .boxTarefas p {
+  cursor: pointer;
   font-size: 15px;
   padding: 8px 10px;
   border-bottom: 2px dotted #ccc;

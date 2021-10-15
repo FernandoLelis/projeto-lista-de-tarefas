@@ -32,6 +32,15 @@ function App() {
       }
     ]);
 
+    window.localStorage.setItem('tarefas',JSON.stringify([
+      ...tarefas,
+      {
+        id: new Date().getTime(),
+        tarefa: tarefa.value,
+        finalizada: false
+      }
+    ]));
+
     setModal(false);
 
   }
@@ -46,6 +55,7 @@ function App() {
     })
 
     setarTarefas(novasTarefas);
+    window.localStorage.setItem('tarefas',JSON.stringify(novasTarefas));
   }
 
   const abrirModal = () => {
@@ -54,6 +64,10 @@ function App() {
 
   useEffect(() => {
     // Fazer uma chamada para API e preencher o estado tarefa.
+    if (window.localStorage.getItem('tarefas') != undefined) {
+      setarTarefas(JSON.parse(window.localStorage.getItem('tarefas')));
+        console.log(window.localStorage.getItem('tarefas'));
+    }
   },[])
 
   return (

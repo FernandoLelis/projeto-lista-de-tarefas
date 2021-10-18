@@ -45,10 +45,10 @@ function App() {
 
   }
 
-  const marcarConcluida = (id) =>{
+  const marcarConcluida = (id,opt) =>{
     let novasTarefas = tarefas.filter(function(val){
       if (val.id == id) {
-        val.finalizada = true;
+        val.finalizada = opt;
       }
 
       return val;
@@ -93,11 +93,11 @@ function App() {
           tarefas.map((val)=>{
             if (!val.finalizada) {
               return (
-                <p onClick={() => marcarConcluida(val.id)}>{val.tarefa}</p>
+                <p onClick={() => marcarConcluida(val.id,true)}>{val.tarefa}</p>
               );
             } else {
               return (
-                <p onClick={() => marcarConcluida(val.id)} style={{textDecoration:'line-through'}}>{val.tarefa}</p>
+                <p onClick={() => marcarConcluida(val.id,false)} style={{textDecoration:'line-through'}}>{val.tarefa}</p>
               );
             } 
           })

@@ -22,12 +22,23 @@ body {
   margin-bottom: 30px;
 }
 
-.boxTarefas p {
+.tarefaSingle {
   cursor: pointer;
   font-size: 15px;
   padding: 8px 10px;
   border-bottom: 2px dotted #ccc;
+  display: flex;
 }
+
+.tarefaSingle p {
+  cursor: pointer;
+  width:  100%;
+}
+
+.tarefaSingle span {
+  cursor: pointer;
+  color: red;
+  }
   
 
 .addTarefas {

@@ -62,6 +62,16 @@ function App() {
     setModal(!modal);
   }
 
+  const deletarTarefa = (id) => {
+    let novasTarefas = tarefas.filter(function(val){
+      if (val.id != id) {
+        return val;
+      }  
+    })
+    alert('Deletar tarefa');
+    setarTarefas(novasTarefas)
+  }
+
   useEffect(() => {
     // Fazer uma chamada para API e preencher o estado tarefa.
     if (window.localStorage.getItem('tarefas') != undefined) {
@@ -93,11 +103,17 @@ function App() {
           tarefas.map((val)=>{
             if (!val.finalizada) {
               return (
+                <div className="tarefaSingle">
                 <p onClick={() => marcarConcluida(val.id,true)}>{val.tarefa}</p>
+                <span onClick={()=>deletarTarefa(val.id)}>[x]</span>
+                </div>
               );
             } else {
               return (
+                <div className="tarefaSingle">
                 <p onClick={() => marcarConcluida(val.id,false)} style={{textDecoration:'line-through'}}>{val.tarefa}</p>
+                <span onClick={()=>deletarTarefa(val.id)}>[x]</span>
+                </div>
               );
             } 
           })
